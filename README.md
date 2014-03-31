@@ -1,4 +1,4 @@
-++*Paradigmas de Programación*++
+*Paradigmas de Programación*<p align="right"><img src="http://www.swi-prolog.org/icons/swipl.png" ></P>
 
 #Paradigma Logico : Prolog
 ==========================

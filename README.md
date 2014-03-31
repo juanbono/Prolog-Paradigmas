@@ -4,7 +4,7 @@
 ==========================
 
 
-[TOC]
+
 
 ## Descripción
 El Prolog (o PROLOG), proveniente del francés PROgrammation en LOGique, es un lenguaje para programar artefactos electrónicos mediante el paradigma lógico con técnicas de producción final interpretada. Es bastante conocido en el área de la Ingeniería Informática para investigación en Inteligencia Artificial.

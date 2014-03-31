@@ -1,6 +1,7 @@
 ++*Paradigmas de Programación*++
 
 #Paradigma Logico : Prolog
+==========================
 
 
 [TOC]

@@ -18,3 +18,5 @@ acepta(Estado,[C|Resto]) :-
 					trans(Estado, C, Estado2),
                     acepta(Estado2, Resto).
 ```
+
+![](https://fbcdn-sphotos-c-a.akamaihd.net/hphotos-ak-frc3/t1.0-9/10006990_788229544521941_1662568937_n.jpg)

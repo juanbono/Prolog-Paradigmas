@@ -11,10 +11,15 @@ El Prolog (o PROLOG), proveniente del francés PROgrammation en LOGique, es un l
 
 ## Contenido
 
-1. [Empresa Petrolera](https://github.com/JuanBono/Prolog/blob/master/empresaPetrolera.pl)
-2. [Compras](https://github.com/JuanBono/Prolog/blob/master/compras.pl)
-3. [Asesino](https://github.com/JuanBono/Prolog/blob/master/asesino.pl)
+### Ejercicios
+
+1. [Empresa Petrolera](https://github.com/JuanBono/Prolog/blob/master/empresaPetrolera.prolog)
+2. [Compras](https://github.com/JuanBono/Prolog/blob/master/compras.prolog)
+3. [Asesino](https://github.com/JuanBono/Prolog/blob/master/asesino.prolog)
 4. [Automata Finito](https://github.com/JuanBono/Prolog/blob/master/Automata.md)
+
+### Trabajos Practicos
+- [Trabajo Practico Individual](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/tp1.prolog)
 
 
 ## Enlaces

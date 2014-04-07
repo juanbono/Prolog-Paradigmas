@@ -61,3 +61,7 @@ noCandidato(Proyecto) :-
 	
 proyectoDificil(Proyecto) :-
 			noCandidato(Proyecto).          % No funciona si el argumento se pasa como variable.
+% 7) cantidadDeCandidatos/2: saber la cantidad de profesionales que saben el lenguaje para realizar un proyecto.
+cantidadDeCandidatos(Proyecto,Cantidad):- 
+					findall(Desarrollador,candidato(Proyecto,Desarrollador),Lista),
+					length(Lista,Cantidad).

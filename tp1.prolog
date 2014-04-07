@@ -21,7 +21,8 @@ valorHora( php,1).                                  % hecho añadido
 gana(Persona, Valor) :-	
 			profesional(Persona, Lenguaje),
 			valorHora(Lenguaje, Valor).
-% 2) candidato/2 : saber quien o quienes son los candidatos para un proyecto.Para ello, el candidato debe saber el lenguaje que se requiere para el proyecto.
+% 2) candidato/2 : saber quien o quienes son los candidatos para un proyecto.
+% Para ello, el candidato debe saber el lenguaje que se requiere para el proyecto.
 candidato(Proyecto, Candidatos) :-
 					proyecto(Proyecto,_,_,Lenguaje),
 					profesional(Candidatos, Lenguaje).
@@ -60,14 +61,14 @@ ganaMas(Persona1,Persona2) :-
 
 % 6) proyectoDificil/1 : es verdadero para un proyecto, cuando no tiene ningun candidato.	
 proyectoDificil(Proyecto) :-
-							not(candidato(Proyecto)).
+			    not(candidato(Proyecto)).
 							
 % 7) cantidadDeCandidatos/2: saber la cantidad de profesionales que saben el lenguaje para realizar un proyecto.
 cantidadDeCandidatos(Proyecto,Cantidad):- 
-									findall(Desarrollador,candidato(Proyecto,Desarrollador),Lista),
-									length(Lista,Cantidad).
+					findall(Desarrollador,candidato(Proyecto,Desarrollador),Lista),
+					length(Lista,Cantidad).
 % 8)factible/1: valida si contamos con los profesionales necesarios para realizar el proyecto.
 factible(Proyecto):-
-					proyecto(Proyecto,CantidadNec,_,_),
-					cantidadDeCandidatos(Proyecto,Cantidad),
-					CantidadNec =< Cantidad.
+		  proyecto(Proyecto,CantidadNec,_,_),
+	       	  cantidadDeCandidatos(Proyecto,Cantidad),
+		  CantidadNec =< Cantidad.

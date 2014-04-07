@@ -55,13 +55,16 @@ ganaMas(Persona1,Persona2) :-
 			sueldo(Persona2,Sueldo2),
 			Sueldo1 > Sueldo2.
 
-% 6) proyectoDificil/1 : es verdadero para un proyecto, cuando no tiene ningun candidato.
-noCandidato(Proyecto) :-
-			not(candidato(Proyecto,_)).
-	
+% 6) proyectoDificil/1 : es verdadero para un proyecto, cuando no tiene ningun candidato.	
 proyectoDificil(Proyecto) :-
-			noCandidato(Proyecto).          % No funciona si el argumento se pasa como variable.
+							not(candidato(Proyecto)).
+							
 % 7) cantidadDeCandidatos/2: saber la cantidad de profesionales que saben el lenguaje para realizar un proyecto.
 cantidadDeCandidatos(Proyecto,Cantidad):- 
-					findall(Desarrollador,candidato(Proyecto,Desarrollador),Lista),
-					length(Lista,Cantidad).
+									findall(Desarrollador,candidato(Proyecto,Desarrollador),Lista),
+									length(Lista,Cantidad).
+% 8)factible/1: valida si contamos con los profesionales necesarios para realizar el proyecto.
+factible(Proyecto):-
+					proyecto(Proyecto,CantidadNec,_,_),
+					cantidadDeCandidatos(Proyecto,Cantidad),
+					CantidadNec =< Cantidad.

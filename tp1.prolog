@@ -30,9 +30,12 @@ candidato(Proyecto, Candidatos) :-
 candidatoRequerido(Nombre) :-	
 				profesional(Nombre, Lenguaje),
 				proyecto(Proyecto,_,_,Lenguaje),
-				proyecto(Proyecto2,_,_,Lenguaje),     % pequeño bug que muestra 2 veces la respuesta. Supongo que es por la propiedad simetrica del "no es igual", 
-				Proyecto \= Proyecto2.		      % el programa no la tiene en cuenta y contabiliza 2 veces lo mismo. "Proyecto no es igual a Proyecto 2 y Proyecto 2 no es igual a Proyecto".
-																  % Buscar solucion, en caso de ser posible.
+				proyecto(Proyecto2,_,_,Lenguaje),
+				Proyecto \= Proyecto2.
+
+% pequeño bug que muestra 2 veces la respuesta. Supongo que es por la propiedad simetrica del "no es igual", 
+% el programa no la tiene en cuenta y contabiliza 2 veces lo mismo. "Proyecto no es igual a Proyecto 2 
+% y Proyecto 2 no es igual a Proyecto". Buscar solucion, en caso de ser posible.
 
 % 4) costoProyecto/2 : valor del proyecto de acuerdo al tiempo y el costo por hora del lenguaje.
 costoProyecto(Proyecto, Costo) :-

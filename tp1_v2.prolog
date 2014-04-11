@@ -2,23 +2,23 @@
 proyecto( cassandra, 1, 10, python ).
 proyecto( atenea, 4, 25, html ).
 proyecto( calisto, 2, 40, php ).
-%proyecto( facebook, 100, 345, php ).		     % hecho añadido
-proyecto( twitter, 98, 212, html ).		     % hecho añadido
-%proyecto( codeacademy, 15, 211, javascript ).       % hecho añadido
+%proyecto( facebook, 100, 345, php ).		% hecho añadido
+proyecto( twitter, 98, 212, html ).		% hecho añadido
+%proyecto( codeacademy, 15, 211, javascript ).  % hecho añadido
 
 % profesional( nombre, lenguaje ).
 profesional( peter, javascript ).
 profesional( ricardo, php ).
-profesional( mikel, html ). 
-profesional( juan, html ).                        % hecho añadido
-profesional( elsa, html ). 			  % hecho añadido
-profesional( vanda, html).			  % hecho añadido
+profesional( mikel, html ).
+profesional( juan, html ).               	% hecho añadido
+profesional( elsa, html ).		        % hecho añadido
+profesional( vanda, html).	       	        % hecho añadido
 
 % valorHora( lenguaje, valor ).
 valorHora( html, 4 ).
 valorHora( javascript, 6 ).
 valorHora( ruby, 10 ).
-%valorHora( php, 1).				  % hecho añadido
+%valorHora( php, 1).			        % hecho añadido
 
 % 1) gana/2 indica cuanto gana por hora un profesional de acuerdo al lenguaje que maneja
 gana(Persona, Valor) :-	
@@ -35,28 +35,26 @@ candidato(Proyecto, ListaCandidatos) :-
 					findall(Desarrollador,profesional(Desarrollador, Lenguaje),ListaCandidatos).
 
 % 3) candidatoRequerido/1 : quienes son los profesionales requeridos por mas de un proyecto.
-my_member(X, [X|_]).
+ eliminarRepetidos([], []). 
+ eliminarRepetidos([X], [X]). 
+ eliminarRepetidos([X, X|Xs], Zs):- 
+ 					eliminarRepetidos([X|Xs], Zs).
+ eliminarRepetidos([X, Y|Ys], [X|Zs]):- 	
+ 					X \= Y, 
+ 					eliminarRepetidos([Y|Ys], Zs).
 
-my_member(X, [_|Ys]):-
-          my_member(X, Ys).
-my_intersect([], _, []).
+ candidatoRequeridoBis(Persona) :- 
+ 				profesional(Persona,Lenguaje),
+ 				proyecto(NombreProyecto1,_,_,Lenguaje), 
+ 				proyecto(NombreProyecto2,_,_,Lenguaje), 
+ 				Proyecto1 \= NombreProyecto2.	
 
-my_intersect([A|As], Bs, [A|Cs]):-
-          my_member(A, Bs),
-          !,
-          my_intersect(As, Bs, Cs).
-
-my_intersect([_|As], Bs, Cs):-
-          my_intersect(As, Bs, Cs).							
-candidatoRequerido(Nombre) :-
-				profesional(Nombre,_),
-				candidato(Proyecto,ListaCandidatos),
-				Proyecto \= Proyecto,
-				my_intersect(ListaCandidatos,ListaCandidatos,Interseccion),
-				my_member(Nombre,Interseccion).
-
-
-
+candidatoRequerido(Lista2) :- 
+				findall(Persona,candidatoRequeridoBis(Persona),Lista),
+				eliminarRepetidos(Lista,Lista2).
+ 							 
+ 							
+					
 % 4) costoProyecto/2 : valor del proyecto de acuerdo al tiempo y el costo por hora del lenguaje.
 costoProyecto(Proyecto, Costo) :-
 				proyecto(Proyecto,Desarrolladores,Tiempo,Lenguaje),
@@ -90,7 +88,8 @@ cantidadDeCandidatos(Proyecto,Cantidad):-
 % 8)factible/1: valida si contamos con los profesionales necesarios para realizar el proyecto.
 factible(Proyecto):-
 			proyecto(Proyecto,CantidadNec,_,_),
-	       		cantidadDeCandidatos(Proyecto,Cantidad),
+			cantidadDeCandidatos(Proyecto,Cantidad),
 			CantidadNec =< Cantidad.
+
 
 

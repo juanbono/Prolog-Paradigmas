@@ -49,9 +49,10 @@ candidato(Proyecto, ListaCandidatos) :-
  				proyecto(NombreProyecto2,_,_,Lenguaje), 
  				Proyecto1 \= NombreProyecto2.	
 
-candidatoRequerido(Lista2) :- 
+candidatoRequerido(Persona) :- 
 				findall(Persona,candidatoRequeridoBis(Persona),Lista),
-				eliminarRepetidos(Lista,Lista2).
+				eliminarRepetidos(Lista,Lista2),
+				member(Persona,Lista2).
  							 
  							
 					

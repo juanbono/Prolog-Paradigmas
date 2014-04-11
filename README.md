@@ -20,6 +20,7 @@ El Prolog (o PROLOG), proveniente del francés PROgrammation en LOGique, es un l
 
 ### Trabajos Practicos
 - [Trabajo Practico Individual](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/tp1.prolog)
+- [Trabajo Practico Individual, Version 2](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/tp1_v2.prolog)
 
 
 ## Enlaces

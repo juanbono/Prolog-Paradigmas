@@ -6,15 +6,15 @@
 proyecto( cassandra, 1, 10, python ).
 proyecto( atenea, 4, 25, html ).
 proyecto( calisto, 2, 40, php ).
-%proyecto( twitter, 98, 212, html ).	              % hecho añadido para probar candidatoRequerido.
+%proyecto( twitter, 98, 212, html ).	          % hecho añadido para probar candidatoRequerido.
 
 % profesional( nombre, lenguaje ).
 profesional( peter, javascript ).
 profesional( ricardo, php ).
 profesional( mikel, html ).
 profesional( juan, html ).                        % hecho añadido
-profesional( elsa, html ).						  % hecho añadido
-profesional( vanda, html).						  % hecho añadido
+profesional( elsa, html ).			  % hecho añadido
+profesional( vanda, html).			  % hecho añadido
 
 % valorHora( lenguaje, valor ).
 valorHora( html, 4 ).
@@ -45,8 +45,8 @@ eliminarRepetidos([Elemento], [Elemento]). 												% de lista con 1 solo ele
 eliminarRepetidos([Elemento, Elemento|Resto], ListaR):- 									
  							eliminarRepetidos([Elemento|Resto], ListaR).
 eliminarRepetidos([Elemento, Elemento1|Resto1], [Elemento|ListaR]):- 	
- 										Elemento \= Elemento1, 
- 										eliminarRepetidos([Elemento1|Resto1], ListaR).
+ 								Elemento \= Elemento1, 
+ 								eliminarRepetidos([Elemento1|Resto1], ListaR).
 
 candidatoRequeridoBis(Persona) :- 
  				profesional(Persona,Lenguaje),
@@ -65,8 +65,8 @@ costoProyecto(Proyecto, Costo) :-
 				valorHora(Lenguaje,Valor),
 				Costo is Valor*Tiempo*Desarrolladores.
 costoProyecto(Proyecto,Costo) :-													% clausula que ayuda a calcular costo de 
-				proyecto(Proyecto,_,_,Lenguaje),		% proyectos con valorHora de lenguaje no 
-				not(valorHora(Lenguaje,_)),			% definido en los hechos, se los considera 0.
+				proyecto(Proyecto,_,_,Lenguaje),	% proyectos con valorHora de lenguaje no 
+				not(valorHora(Lenguaje,_)),		% definido en los hechos, se los considera 0.
 				Costo is 0.
 
 % 5) ganaMas/2 : saber si un profesional gana mas que otro

@@ -38,6 +38,12 @@ listarCandidatos(Proyecto,ListaCandidatos):-
 candidato(Proyecto, Persona) :-
 				listarCandidatos(Proyecto,ListaCandidatos),	
 				member(Persona,ListaCandidatos).
+			
+		
+% 2.1) candidato2 *** Añadido *** 
+candidato2(Proyecto,Persona) :- 
+				proyecto(Proyecto,_,_,Lenguaje),
+				profesional(Persona, Lenguaje).	
 
 % 3) candidatoRequerido/1 : quienes son los profesionales requeridos por mas de un proyecto.
 eliminarRepetidos([], []). 																% eliminarRepetidos/2 es para los casos triviales de lista vacia o
@@ -58,6 +64,13 @@ candidatoRequerido(Persona) :-
 				findall(Persona,candidatoRequeridoBis(Persona),Lista),
 				eliminarRepetidos(Lista,ListaLimpia),
 				member(Persona,ListaLimpia).
+	
+% 3.1) candidatoRequerido2 *** Añadido *** 
+candidatoRequerido2(Persona) :-	
+				profesional(Persona,_),
+				findall(Proyecto,candidato2(Proyecto,Persona),Lista),
+				length(Lista,T),
+				T >= 2.
 
 % 4) costoProyecto/2 : valor del proyecto de acuerdo al tiempo y el costo por hora del lenguaje.
 costoProyecto(Proyecto, Costo) :-

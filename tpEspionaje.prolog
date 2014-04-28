@@ -33,18 +33,26 @@ esFrancotirador(Nombre):- agente(Nombre, francotirador(_)).
 
 % cumpleRequisito/2
 cumpleRequisito(explosivos(X),Nombre):-
-									                   	agente(Nombre, tirabombas(Y)),
-									                  	Y >= X.
+					agente(Nombre, tirabombas(Y)),
+					Y >= X.
 
 cumpleRequisito(Idioma,Nombre):-
-								              	agente(Nombre, espia(Lenguajes)),
-								              	member(Idioma,Lenguajes).
+				agente(Nombre, espia(Lenguajes)),
+				member(Idioma,Lenguajes).
 
 cumpleRequisito(distancia(X), Nombre):-
-									                    	agente(Nombre, francotirador(Y)),
-									                     	Y >= X.
+					agente(Nombre, francotirador(Y)),
+					Y >= X.
 
 cumpleRequisito(sigilo,Nombre):-  esNinja(Nombre).
 cumpleRequisito(sigilo,Nombre):-  esEspia(Nombre).
 cumpleRequisito(fuerza,Nombre):-  esTiraBombas(Nombre).
 cumpleRequisito(fuerza,Nombre):-  esNinja(Nombre).
+
+% esUtil/2 Nota: Repite las respuestas, si cumplen mas de 1 condicion.
+esUtil(Mision,Nombre):-
+			mision(Mision,_,Objetivo),
+			requisito(Objetivo,Requisito),
+			cumpleRequisito(Requisito,Nombre).
+
+%esIndispensable/2

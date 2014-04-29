@@ -56,3 +56,21 @@ esUtil(Mision,Nombre):-
 			cumpleRequisito(Requisito,Nombre).
 
 %esIndispensable/2
+% Con Listas Auxiliares
+
+% Sin Listas Auxiliares
+
+%rambo/1
+rambo(Nombre):-
+		agente(Nombre,_),
+		forall(mision(Mision,_,_),esUtil(Mision,Nombre)).
+%equipoPosible/2 Nota: me parece que en este los equipos deben ser dependiendo de la cantidad que dice la mision y no mas. 
+equipoPosible(Mision,Equipo):-
+				mision(Mision,CantidadRequerida,_),
+				findall(Agente,esUtil(Mision,Agente),Equipo),
+				length(Equipo,Cantidad),
+				Cantidad >= CantidadRequerida.
+%eshImposhible/1
+eshImposhible(Mision):-
+			mision(Mision,_,_),
+			not(equipoPosible(Mision,_)).

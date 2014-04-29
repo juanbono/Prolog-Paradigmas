@@ -74,3 +74,8 @@ equipoPosible(Mision,Equipo):-
 eshImposhible(Mision):-
 			mision(Mision,_,_),
 			not(equipoPosible(Mision,_)).
+%estoEstaLlenoDeNinjas/1
+estoEstaLlenoDeNinjas(Mision):-
+				mision(Mision,_,_),
+				equipoPosible(Mision,Equipo),
+				forall(member(Miembro,Equipo),esNinja(Miembro)).

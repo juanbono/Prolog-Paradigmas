@@ -18,6 +18,8 @@ El Prolog (o PROLOG), proveniente del francés PROgrammation en LOGique, es un l
 3. [Asesino](https://github.com/JuanBono/Prolog/blob/master/asesino.prolog)
 4. [Automata Finito](https://github.com/JuanBono/Prolog/blob/master/Automata.md)
 5. [Espionaje](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/tpEspionaje.prolog)
+6. [Libros y Autores](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/libros.prolog)
+7. [Laboratorio de Dexter]()
 
 ### Trabajos Practicos
 - [Trabajo Practico Individual](https://github.com/JuanBono/Prolog-Paradigmas/blob/master/tp1_v2.prolog)

@@ -51,16 +51,16 @@ tieneAcceso(Personaje,escuela):- actividad(Personaje,estudiar(_),_).
 
 % b) ¿De qué manera se puede averiguar algún lugar inaccesible?
 inaccesible(Lugar):- 
-					          lugar(Lugar),
-				          	not(tieneAcceso(_,Lugar)).
+			lugar(Lugar),
+			not(tieneAcceso(_,Lugar)).
 
 % 2) Inventores
 % Hacer el predicado inventorCreido/1 que permite deducir si un inventor es creído. Lo es
 % cuando inventa algo y solo admira a genios.
 
 inventorCreido(Personaje) :-
-							              actividad(Personaje,inventar(_,_,_),_),
-						              	forall(admira(Personaje,Idolo),genio(Idolo)).
+			actividad(Personaje,inventar(_,_,_),_),
+			forall(admira(Personaje,Idolo),genio(Idolo)).
 
 
 
@@ -81,22 +81,22 @@ leDebeRespeto(Personaje,PR):-admira(Personaje,PersonajeRespetado),leDebeRespeto(
 %? diversión: la valoración de la actividad
 
 amenaza(Personaje,Nivel):-
-						            	actividad(Personaje,estudiar(L),_),
-					            		length(L,CantidadMaterias),
-						            	Nivel is 10*CantidadMaterias.
+			actividad(Personaje,estudiar(L),_),
+			length(L,CantidadMaterias),
+			Nivel is 10*CantidadMaterias.
 
 amenaza(Personaje,Nivel):-
-							            actividad(Personaje,inventar(_,Impacto,Porcentaje),_),
-						            	Nivel is Impacto*Porcentaje.
+			  actividad(Personaje,inventar(_,Impacto,Porcentaje),_),
+			  Nivel is Impacto*Porcentaje.
 
 amenaza(Personaje,Nivel):-
-						            	actividad(Personaje,destruir(Victima),_),
-					             		amenaza(Victima,Nivel).
+			actividad(Personaje,destruir(Victima),_),
+			amenaza(Victima,Nivel).
 
 amenaza(Personaje,Nivel):-
-						            	actividad(Personaje,diversion(_,_,Valoracion),_),
-						            	Nivel is Valoracion.
+			actividad(Personaje,diversion(_,_,Valoracion),_),
+			Nivel is Valoracion.
 
 nivelAmenaza(Personaje,Sumatoria):-
-									                findall(Nivel,amenaza(Personaje,Nivel),L),
-									                sumlist(L,Sumatoria).
+				findall(Nivel,amenaza(Personaje,Nivel),L),
+				sumlist(L,Sumatoria).

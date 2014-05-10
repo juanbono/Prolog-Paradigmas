@@ -25,7 +25,7 @@ libro(orwell, rebelion, 50000).
 
 
 todosAlMenos(Autor,Cantidad):-
-								forall(libro(Autor,_,Ejemplares),Ejemplares >= Cantidad).
+				forall(libro(Autor,_,Ejemplares),Ejemplares >= Cantidad).
 
 
 
@@ -38,10 +38,11 @@ todosAlMenos(Autor,Cantidad):-
 % porque El Aleph no es de García Márquez ni de Orwell.
 
 noEsDeNinguno(ListaAutores,Libro):-
-									libro(_,Libro,_),
-									not(member(Libro,ListaAutores)).
+					libro(_,Libro,_),
+					not(member(Libro,ListaAutores)).
 
 %% +++++++++++++++++++ Segunda Parte ++++++++++++++++++++++ %%
+
 libro(garciaMarquez, novela(elamor), 50000).
 libro(garciaMarquez, novela(cienAnios), 100000).
 libro(garciaMarquez, novela(cronica), 40000).
@@ -50,6 +51,7 @@ libro(borges, cuentos(ficciones, [funes, tlon, senderos]), 70000).
 libro(borges, cuentos(aleph, [cruz, zahir]), 80000).
 libro(orwell, novela(1984), 120000).
 libro(orwell, novela(rebelión), 50000).
+
 % Modificar los predicados de la primer parte para contemplar las modificaciones realizadas.
 
 
@@ -58,8 +60,8 @@ autorLibro(Autor,Titulo):- libro(Autor,novela(Titulo),_).
 autorLibro(Autor,Titulo):- libro(Autor,cuento(Titulo,_),_).
 
 noEsDeNinguno(ListaAutores,Libro):-
-									autorLibro(Autor,Titulo)
-									not(member(Libro,ListaAutores)).
+					autorLibro(Autor,Titulo)
+					not(member(Libro,ListaAutores)).
 
 
 
@@ -72,3 +74,4 @@ noEsDeNinguno(ListaAutores,Libro):-
 % garciaMarquez,orwell], cuentos(aleph, [cruz, zahir])).
 % sino que va a seguir siendo
 % noEsDeNinguno([garciaMarquez,orwell],aleph).
+

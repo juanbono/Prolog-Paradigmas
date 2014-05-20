@@ -15,7 +15,7 @@ viveEn(allien, espacio).
 viveEn(jesus, espacio).          % Agregado
 viveEn(astronauta, espacio).     % Agregado
 viveEn(gatoVolador, espacio).    % Agregado
-viveEn(gea, espacio).			 % Agregado
+viveEn(gea, espacio).		 % Agregado
 viveEn(forever, espacio).        % Agregado
 	
 maneja(godzilla, auto(4)).			
@@ -32,11 +32,11 @@ estaDeAPie(Mounstruo):- not(maneja(Mounstruo, _)).
 
 %2. puedeLLevar/2. 
 puedeLlevar(Mounstruo1, Mounstruo2):-
-									 viveEn(Mounstruo1, Lugar1),
-									 viveEn(Mounstruo2, Lugar2),
-									 maneja(Mounstruo1, _),
-									 Mounstruo1 \= Mounstruo2,
-									 Lugar1 = Lugar2.
+				viveEn(Mounstruo1, Lugar1),
+				viveEn(Mounstruo2, Lugar2),
+				maneja(Mounstruo1, _),
+				Mounstruo1 \= Mounstruo2,
+				Lugar1 = Lugar2.
 
 %3. cantidadPasajeros/2.
 
@@ -45,8 +45,8 @@ puedeLlevar(Mounstruo1, Mounstruo2):-
 
 % caso: auto
 cantidad(Mounstruo, CantidadPas):-
-								maneja(Mounstruo, auto(Cantidad)),
-								CantidadPas is (Cantidad-1).		
+				maneja(Mounstruo, auto(Cantidad)),
+				CantidadPas is (Cantidad-1).		
 % caso: colectivo
 cantidad(Mounstruo, CantidadPas):-
 				maneja(Mounstruo, colectivo(_, ASimples, ADobles)),
@@ -70,14 +70,14 @@ minimo(Numero1, Numero2,Minimo):-
 						Minimo is Numero1 .	
 
 cantidadPasajeros(Mounstruo,CantidadPasFinal):-
-							findall(Pasajeros,puedeLlevar(Mounstruo,Pasajeros),Lista),
-							length(Lista,CantidadPas),
-							cantidad(Mounstruo,Cantidad),
-							minimo(Cantidad,CantidadPas,CantidadPasFinal).
+						findall(Pasajeros,puedeLlevar(Mounstruo,Pasajeros),Lista),
+						length(Lista,CantidadPas),
+						cantidad(Mounstruo,Cantidad),
+						minimo(Cantidad,CantidadPas,CantidadPasFinal).
 
 %4. lugarVehiculizado/1.
 
 lugarVehiculizado(Lugar):-
-						viveEn(Mounstruo,Lugar),
-						forall(viveEn(Mounstruo,Lugar),maneja(Mounstruo,_)),
-						forall(cantidad(Mounstruo,Cantidad),(Cantidad > 10)).
+			viveEn(Mounstruo,Lugar),
+			forall(viveEn(Mounstruo,Lugar),maneja(Mounstruo,_)),
+			forall(cantidad(Mounstruo,Cantidad),(Cantidad > 10)).
